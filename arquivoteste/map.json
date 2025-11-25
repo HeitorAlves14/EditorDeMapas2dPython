@@ -1,0 +1,81 @@
+{
+  "sectors": [
+    {
+      "id": 1,
+      "outer": [
+        [
+          12.0,
+          4.0
+        ],
+        [
+          66.0,
+          2.0
+        ],
+        [
+          73.0,
+          45.0
+        ],
+        [
+          12.0,
+          46.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {}
+    }
+  ],
+  "walls": [
+    {
+      "start": [
+        12.0,
+        4.0
+      ],
+      "end": [
+        66.0,
+        2.0
+      ],
+      "sector_front": 1,
+      "sector_back": null,
+      "is_portal": false
+    },
+    {
+      "start": [
+        66.0,
+        2.0
+      ],
+      "end": [
+        73.0,
+        45.0
+      ],
+      "sector_front": 1,
+      "sector_back": null,
+      "is_portal": false
+    },
+    {
+      "start": [
+        73.0,
+        45.0
+      ],
+      "end": [
+        12.0,
+        46.0
+      ],
+      "sector_front": 1,
+      "sector_back": null,
+      "is_portal": false
+    },
+    {
+      "start": [
+        12.0,
+        46.0
+      ],
+      "end": [
+        12.0,
+        4.0
+      ],
+      "sector_front": 1,
+      "sector_back": null,
+      "is_portal": false
+    }
+  ]
+}

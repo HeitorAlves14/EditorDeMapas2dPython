@@ -1,0 +1,28 @@
+# config.py
+
+# --- Configurações básicas ---
+W, H = 1900, 1000#1280, 800
+UI_W = 420 #320           # UI lateral reduzida
+VIEW_W = W - UI_W
+GRID = 10
+
+# --- Cores ---
+COL_BG = (30, 32, 36)
+COL_GRID = (42, 45, 50)
+COL_UI = (24, 26, 30)
+COL_TEXT = (220, 225, 230)
+COL_WARN = (255, 210, 120)
+
+COL_SECTOR_FILL = (70, 100, 145, 60)
+COL_SECTOR = (50, 130, 220)
+COL_SECTOR_SELECTED = (255, 255, 140)
+
+COL_WALL_OUTER = (180, 180, 190)
+COL_WALL_SHARED = (80, 220, 120)
+COL_PORTAL_HINT = (255, 170, 60)
+COL_PORTAL_CONFIRMED = (0, 255, 0)
+
+COL_DIV = (255, 220, 0) # BSP
+COL_FRONT_ARROW = (0, 255, 0)
+
+COL_VERTEX = (240, 240, 240)
