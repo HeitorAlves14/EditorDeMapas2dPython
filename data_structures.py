@@ -31,6 +31,7 @@ ATTRIBUTE_REGISTRY["is_secret"] = AttributeSpec("is_secret", bool, False)
 ENTITY_ATTRIBUTE_REGISTRY = {}
 
 ENTITY_ATTRIBUTE_REGISTRY["skill_level"] = AttributeSpec("skill_level", int, None)
+ENTITY_ATTRIBUTE_REGISTRY["is_enemy"] = AttributeSpec("is_enemy", bool, True)
 
 # -----------------------------
 # Dados do editor (classes)

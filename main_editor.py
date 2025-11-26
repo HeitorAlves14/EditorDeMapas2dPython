@@ -85,7 +85,7 @@ ui.rebuild_ui(on_export, on_load, on_clear, toggle_bsp)
 
 def handle_entity_creation():
     """Lógica para criar uma entidade após a entrada do tipo."""
-    entity_type = handle_prompt_input("Tipo da entidade (player_spawn, enemy, barrel, pickup): ")
+    entity_type = handle_prompt_input("Tipo da entidade (skill_level, is_enemy): ")
     mx, my = pg.mouse.get_pos()
     
     if entity_type:
