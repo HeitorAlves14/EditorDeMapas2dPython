@@ -83,13 +83,13 @@ def toggle_bsp():
 # Reconstruir UI com as novas funções de callback
 ui.rebuild_ui(on_export, on_load, on_clear, toggle_bsp)
 
-def handle_entity_creation():
+def handle_entity_creation(grid_map):
     """Lógica para criar uma entidade após a entrada do tipo."""
     entity_type = handle_prompt_input("Tipo da entidade (skill_level, is_enemy): ")
     mx, my = pg.mouse.get_pos()
     
     if entity_type:
-        msg = mm.add_entity((mx, my), entity_type, angle=0.0)
+        msg = mm.add_entity((mx, my), entity_type, grid_map)
         ui.set_message(msg)
     else:
         ui.set_message("Criação de entidade cancelada.")
@@ -143,6 +143,13 @@ while running:
             continue
 
         # Lógica de Input no painel de visualização
+        if e.type == pg.MOUSEWHEEL :
+            if e.y > 0: # scroll para cima
+                config.GRID = max(2, config.GRID - 1) # diminui tamanho da célula
+            elif e.y < 0: # scroll para baixo
+                config.GRID = max(2, config.GRID + 1) # aumenta o tamanho da célula
+            ui.set_message(f"Zoom ajustado: GRID={config.GRID}")
+            ui.rebuild_help_panel()
         if e.type == pg.MOUSEBUTTONDOWN and e.button == 1:
             mx, my = e.pos
             if mx < config.VIEW_W: # Clique na área de desenho
@@ -152,20 +159,20 @@ while running:
                     ui.set_message(f"Vértice adicionado: ({mx}, {my})")
                 elif ui.mode == "select":#Modo select
                     # Tentar selecionar entidade(Prioridade)
-                    msg = mm.pick_entity(mx, my)
+                    msg = mm.pick_entity(mx, my, config.GRID)
                     if mm.selected_entity is None:
                         #Se não selecionou entidade, seleciona setor.
-                        msg = mm.pick_sector(mx, my)
+                        msg = mm.pick_sector(mx, my, config.GRID)
                     ui.set_message(msg)
                 elif ui.mode == "portal": #Modo portal
                     # Tentar criar portal
-                    if mm.try_create_portal_at_point((mx, my)):
+                    if mm.try_create_portal_at_point((mx, my), config.GRID):
                         ui.set_message("Portal criado/alterado.")
                     else:
                         ui.set_message("Nenhuma dica de portal encontrada no local.")
                 elif ui.mode == "entity":#Modo entity
                     # Cria entidade na posição do clique
-                    handle_entity_creation()
+                    handle_entity_creation(config.GRID)
                 ui.rebuild_attr_panel()
 
         elif e.type == pg.MOUSEBUTTONDOWN and e.button == 3:
@@ -201,6 +208,15 @@ while running:
                     ui.set_mode("entity")
                 else:
                     ui.set_mode("draw")
+
+            elif e.key == pg.K_LEFT:
+                config.CAM_OFFSET_X += config.GRID
+            elif e.key == pg.K_RIGHT:
+                config.CAM_OFFSET_X -= config.GRID
+            elif e.key == pg.K_UP:
+                config.CAM_OFFSET_Y += config.GRID
+            elif e.key == pg.K_DOWN:
+                config.CAM_OFFSET_Y -= config.GRID
 
             elif e.key == pg.K_e:
                 on_export()
@@ -253,7 +269,7 @@ while running:
 
                     # Verifica se o ponto está proximo da linha.
                     d = geo.point_line_distance((mx, my), v1, v2)
-                    if d < 10:
+                    if d < config.TOLERANCE:
                         key = f"wall_{i}"
                         obj = mm.selected_sector
                         handle_attribute_input(key, obj)

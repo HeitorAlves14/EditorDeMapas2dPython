@@ -1,0 +1,92 @@
+{
+  "sectors": [
+    {
+      "id": 1,
+      "outer": [
+        [
+          5.0,
+          4.0
+        ],
+        [
+          75.0,
+          4.0
+        ],
+        [
+          75.0,
+          57.0
+        ],
+        [
+          5.0,
+          55.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "wall_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 255,
+        "is_sky": false,
+        "special": "",
+        "damage": 0,
+        "is_secret": false
+      }
+    }
+  ],
+  "walls": [
+    {
+      "start": [
+        5.0,
+        4.0
+      ],
+      "end": [
+        75.0,
+        4.0
+      ],
+      "sector_front": 1,
+      "sector_back": null,
+      "is_portal": false
+    },
+    {
+      "start": [
+        75.0,
+        4.0
+      ],
+      "end": [
+        75.0,
+        57.0
+      ],
+      "sector_front": 1,
+      "sector_back": null,
+      "is_portal": false
+    },
+    {
+      "start": [
+        75.0,
+        57.0
+      ],
+      "end": [
+        5.0,
+        55.0
+      ],
+      "sector_front": 1,
+      "sector_back": null,
+      "is_portal": false
+    },
+    {
+      "start": [
+        5.0,
+        55.0
+      ],
+      "end": [
+        5.0,
+        4.0
+      ],
+      "sector_front": 1,
+      "sector_back": null,
+      "is_portal": false
+    }
+  ]
+}

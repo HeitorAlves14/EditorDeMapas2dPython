@@ -2,7 +2,7 @@
 import os, json
 from collections import defaultdict
 import geometry as geo
-from config import GRID
+import config
 from data_structures import Sector, Entity, Wall, BSPNode, ATTRIBUTE_REGISTRY, ENTITY_ATTRIBUTE_REGISTRY
 
 # -----------------------------
@@ -33,11 +33,10 @@ def add_sector(sec):
     if sec.parent_id is not None:
         children_by_parent[sec.parent_id].append(sec)
 
-def add_entity(pos, etype, angle=0.0):
+def add_entity(pos, etype, grid_map, angle=0.0):
     """Cria uma nova entidade na posição."""
     # Posição convertida dos pixeis da tela para coordenadas de grade
-    map_x = pos[0] / GRID
-    map_y = pos[1] / GRID
+    map_x, map_y = screen_to_map(pos[0], pos[1])
     map_pos = (map_x, map_y)
     # Encontra o setor em que a entidade está.
     sector_id = None
@@ -118,6 +117,12 @@ def set_attr(obj, key, value):
     obj.attrs[key] = str(value) 
     return True
 
+
+
+def screen_to_map(sx, sy):
+    return ((sx - config.CAM_OFFSET_X) / config.GRID,
+            (sy - config.CAM_OFFSET_Y) / config.GRID)
+
 def remove_attrs(obj, keys):
     """Remove atributos customizados de um setor ou entidade."""
     for key in keys:
@@ -132,9 +137,9 @@ def remove_attrs(obj, keys):
 def add_vertex(mx, my, grid, use_snap):
     global current_vertices
     if use_snap:
-        nx, ny = geo.snap_to_grid(mx, my, grid)
+        nx, ny = geo.snap_to_grid(mx - config.CAM_OFFSET_X, my - config.CAM_OFFSET_Y, grid)
     else:
-        nx, ny = mx, my
+        nx, ny = mx - config.CAM_OFFSET_X, my - config.CAM_OFFSET_Y
     
     map_x = nx / grid
     map_y = ny / grid
@@ -177,11 +182,12 @@ def pick_sector_recursive(pt, sector):
             return found
     return sector
 
-def pick_sector(mx, my):
+def pick_sector(mx, my, grid_map):
     global selected_sector
+
+    mx, my, = geo.snap_to_grid(mx, my, grid_map)
     
-    map_x = mx / GRID
-    map_y = my / GRID
+    map_x, map_y = screen_to_map(mx, my)
     pt = (map_x, map_y)
 
     roots = [s for s in sectors if getattr(s, "parent_id", None) is None]
@@ -194,19 +200,16 @@ def pick_sector(mx, my):
     selected_sector = None
     return "Nenhum setor sob o clique."
 
-def pick_entity(mx, my, tolerance=1.0):
+def pick_entity(mx, my, grid_map):
     """Tenta selecionar uma entidade próxima ao clique."""
     global selected_entity
-    map_x = mx / GRID
-    map_y = my / GRID
+    map_x, map_y = screen_to_map(mx, my)
     pt = (map_x, map_y)
-
-    map_tolerance = tolerance / GRID
     
     # Itera sobre entidades de trás para frente (última criada é a mais visível)
     for entity in reversed(entities):
         e_pos = entity.pos
-        if geo.point_distance(pt, e_pos) < tolerance:
+        if geo.point_distance(pt, e_pos) < config.TOLERANCE:
             selected_entity = entity
             return f"Entidade {selected_entity.id} ({selected_entity.type}) selecionada."
             
@@ -321,15 +324,23 @@ def compute_portal_hints():
                     if geo.almost_colinear(a1,a2,b1,b2) and geo.overlap_on_line(a1,a2,b1,b2):
                         portal_hint_segments.append(((a1,a2),(b1,b2)))
 
-def try_create_portal_at_point(pt):
+def try_create_portal_at_point(pt, grid_map):
+    # Converte pixels da tela para espaçamento da grade
+    nx, ny = geo.snap_to_grid(pt[0], pt[1], grid_map)
+    pt = (nx / grid_map, ny / grid_map)
+
     created = False
     for (a1,a2),(b1,b2) in portal_hint_segments:
-        if geo.point_line_distance(pt, a1, a2) < 6 or geo.point_line_distance(pt, b1, b2) < 6:
+        if geo.point_line_distance(pt, a1, a2) < config.TOLERANCE or geo.point_line_distance(pt, b1, b2) < config.TOLERANCE:
             for s in sectors:
                 for i,(v1,v2) in enumerate(geo.edges_of(s.outer)):
                     if geo.almost_colinear(a1,a2,v1,v2) and geo.overlap_on_line(a1,a2,v1,v2):
-                        set_attr(s, f"wall_{i}", "portal")
-            created = True
+                        current = get_attr(s, f"wall_{i}")
+                        if current == "portal":
+                            remove_attrs(s, [f"wall_{i}"])
+                        else:
+                            set_attr(s, f"wall_{i}", "portal")
+                        created = True
     return created
 
 # Funções de I/O (Exportar/Importar)
@@ -380,6 +391,11 @@ def load_map(map_name="map.json"):
         outer = [tuple(v) for v in sdata["outer"]]
         sec = Sector(outer, parent_id=sdata.get("parent_id"), attrs=sdata.get("attrs", {}))
         sec.id = sdata["id"]
+
+        for key, spec in ATTRIBUTE_REGISTRY.items():
+            if key not in sec.attrs:
+                sec.attrs[key] = spec.default
+
         sectors.append(sec)
 
     # Carrega entidades do mapa.
@@ -397,6 +413,11 @@ def load_map(map_name="map.json"):
                          )
             ent.id = edata["id"]
             ent.attrs.update(edata.get("attrs", {}))
+
+            for key, spec in ENTITY_ATTRIBUTE_REGISTRY.items():
+                if key not in ent.attrs:
+                    ent.attrs[key] = spec.default
+
             entities.append(ent)
     else:
         # Aviso para o usuário se o arquivo secundário estiver faltando

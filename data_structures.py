@@ -21,11 +21,16 @@ ATTRIBUTE_REGISTRY["ceiling_text"] = AttributeSpec("ceiling_text", int, None)
 ATTRIBUTE_REGISTRY["wall_text"] = AttributeSpec("wall_text", int, None)
 ATTRIBUTE_REGISTRY["floor_h"] = AttributeSpec("floor_h", float, 0.0)
 ATTRIBUTE_REGISTRY["ceiling_h"] = AttributeSpec("ceiling_h", float, 4.0)
+
 ATTRIBUTE_REGISTRY["light_level"] = AttributeSpec("light_level", int, 255)
 ATTRIBUTE_REGISTRY["is_sky"] = AttributeSpec("is_sky", bool, False)
 ATTRIBUTE_REGISTRY["special"] = AttributeSpec("special", str, "")
 ATTRIBUTE_REGISTRY["damage"] = AttributeSpec("damage", int, 0)
 ATTRIBUTE_REGISTRY["is_secret"] = AttributeSpec("is_secret", bool, False)
+
+ATTRIBUTE_REGISTRY["floor_off"] = AttributeSpec("floor_off", int, 8)
+ATTRIBUTE_REGISTRY["ceiling_off"] = AttributeSpec("ceiling_off", int, 16)
+ATTRIBUTE_REGISTRY["wall_off"] = AttributeSpec("wall_off", int, 32)
 
 # Registros padrão das entidades.
 ENTITY_ATTRIBUTE_REGISTRY = {}
@@ -48,11 +53,17 @@ class Sector:
             self.attrs.update(attrs)
 
     def to_json(self):
+        attrs_output = {}
+        for key, spec in ATTRIBUTE_REGISTRY.items():
+            # Obtém o valor de self.attrs ou o valor padrão (spec.default).
+            val = self.attrs.get(key, spec.default)
+            attrs_output[key] = val
+            
         return {
             "id": self.id,
             "outer": [[round(x,2), round(y,2)] for (x,y) in self.outer],
             "parent_id": self.parent_id,
-            "attrs": self.attrs
+            "attrs": attrs_output
         }
 
     def __repr__(self):
@@ -83,13 +94,28 @@ class Entity:
         self.attrs = attrs or {}
 
     def to_json(self):
+        # Combina atributos modificados com valores padrão das entidades.
+        attrs_output = {}
+        # ...
+
+        # Corrigido self.etype para self.type em ambas as ocorrências:
+        entity_type_attrs = ENTITY_ATTRIBUTE_REGISTRY
+        # A linha acima pode ser simplificada, pois o registro é global.
+        
+        # Iterar sobre todos os atributos definidos para este tipo de entidade
+        for key, spec in entity_type_attrs.items(): # Uso direto do registro global
+            # Obtém o valor de self.attrs ou o valor padrão do registro.
+            val = self.attrs.get(key, spec.default)
+            attrs_output[key] = val
+
         return {
             "id": self.id,
-            "type": self.type,
-            "pos": [round(self.pos[0],2), round(self.pos[1],2)],
+            # Corrigido: self.etype -> self.type
+            "type": self.type, 
+            "pos": [round(self.pos[0], 2), round(self.pos[1], 2)],
             "angle": round(self.angle, 3),
             "sector_id": self.sector_id,
-            "attrs": self.attrs
+            "attrs": attrs_output
         }
     
     @classmethod

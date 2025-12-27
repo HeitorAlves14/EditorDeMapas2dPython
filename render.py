@@ -9,9 +9,11 @@ import map_manager as mm # Para acessar o estado do mapa
 
 def draw_grid(screen):
     """Desenha a grade de fundo."""
-    for x in range(0, config.VIEW_W, config.GRID):
+    start_x = -config.CAM_OFFSET_X % config.GRID
+    start_y = -config.CAM_OFFSET_Y & config.GRID
+    for x in range(start_x, config.VIEW_W, config.GRID):
         pg.draw.line(screen, config.COL_GRID, (x, 0), (x, config.H))
-    for y in range(0, config.H, config.GRID):
+    for y in range(start_y, config.H, config.GRID):
         pg.draw.line(screen, config.COL_GRID, (0, y), (config.VIEW_W, y))
 
 def draw_current(screen):
@@ -30,7 +32,8 @@ def draw_current(screen):
         pg.draw.circle(screen, config.COL_VERTEX, v, 4)
 
 def map_to_screen (point):
-    return (point[0] * config.GRID, point [1] * config.GRID)
+    return (point[0] * config.GRID + config.CAM_OFFSET_X,
+            point [1] * config.GRID + config.CAM_OFFSET_Y)
 
 def map_list_to_screen(points):
     return [map_to_screen(p) for p in points]

@@ -5,6 +5,9 @@ W, H = 1900, 1000#1280, 800
 UI_W = 420 #320           # UI lateral reduzida
 VIEW_W = W - UI_W
 GRID = 10
+TOLERANCE = 0.1
+CAM_OFFSET_X = 0
+CAM_OFFSET_Y = 0
 
 # --- Cores ---
 COL_BG = (30, 32, 36)
