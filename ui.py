@@ -2,7 +2,7 @@
 import pygame as pg
 import config
 import map_manager as mm
-from data_structures import ATTRIBUTE_REGISTRY, ENTITY_ATTRIBUTE_REGISTRY
+from data_structures import ATTRIBUTE_REGISTRY, ENTITY_ATTRIBUTE_REGISTRY, WALL_ATTRIBUTE_REGISTRY
 
 # Variáveis globais de UI (Estado de UI)
 font = None
@@ -19,8 +19,6 @@ def init_ui(pg_font, on_export_func=None, on_load_func=None, on_clear_func=None,
     """Inicializa fontes e constrói a UI inicial."""
     global font
     font = pg_font
-    #if on_export_func and on_load_funck and on_clear_func and on_bsp_toggle_func:
-    #    rebuild_ui(on_export_func, on_load_func, on_clear_func, on_bsp_toggle_func)
 
 class UIButton:
     def __init__(self, rect, text, action):
@@ -114,39 +112,42 @@ def rebuild_attr_panel():
         # Continua para a seção de setores, mas com y_start mais alto
 
     elif mm.selected_sector:
-        # Título
-        attr_elements.append((y_start, f"Setor {mm.selected_sector.id} | Profundidade: {mm.depth(mm.selected_sector)}", config.COL_SECTOR_SELECTED))
-        y_start += 20
-        # Atributos atuais
-        for i, (key, spec) in enumerate(ATTRIBUTE_REGISTRY.items()):
-            val = mm.get_attr(mm.selected_sector, key)
-            if val is None:
-                display_val = f"<{spec.typ.__name__}> (Default: {spec.default})"
-                color = config.COL_TEXT
-            else:
-                display_val = str(val)
-                color = config.COL_SECTOR
-            
-            # Adicionar a linha de texto
-            attr_elements.append((y_start, f"{key}: {display_val}", color))
+        for sec in mm.selected_sector:
+            # --- Título e Atributos do Setor ---
+            attr_elements.append((y_start, f"Setor {sec.id} | Prof: {mm.depth(sec)}", config.COL_SECTOR_SELECTED))
             y_start += 20
-        
-        # Atributos de parede
-        y_start += 10
-        attr_elements.append((y_start, f"Setor {mm.selected_sector.id} | Profundidade: {mm.depth(mm.selected_sector)}", config.COL_SECTOR_SELECTED))
-        y_start += 20
+            
+            for key, spec in ATTRIBUTE_REGISTRY.items():
+                val = mm.get_attr(sec, key)
+                color = config.COL_SECTOR if key in sec.attrs else config.COL_TEXT
+                display_val = str(val) if key in sec.attrs else f"(Padrão: {spec.default})"
+                attr_elements.append((y_start, f"  {key}: {display_val}", color))
+                y_start += 20
+            
+            # --- Atributos de Parede ---
+            y_start += 10
+            attr_elements.append((y_start, "--- Paredes ---", config.COL_SECTOR_SELECTED))
+            y_start += 20
 
-        for i, (key, spec) in enumerate(mm.selected_sector.outer):
-            wall_attr = mm.get_attr(mm.selected_sector, f"wall_{i}")
-            if wall_attr:
-                display_val = wall_attr
-                color = config.COL_PORTAL_CONFIRMED if wall_attr == "portal" else config.COL_TEXT
-            else:
-                display_val = "<none>"
-                color = config.COL_WARN
-            
-            attr_elements.append((y_start, f"Wall {i}: {display_val}", color))
-            y_start += 20
+            for i in range(len(sec.outer)):
+                attr_elements.append((y_start, f"wall_{i}:", config.COL_WARN))
+                y_start += 20
+                
+                # Lista os atributos padrões da parede
+                for key, spec in WALL_ATTRIBUTE_REGISTRY.items():
+                    val = mm.get_attr(sec, key, wall_idx=i)
+                    actual_key = f"wall_{i}_{key}"
+                    
+                    color = config.COL_TEXT
+                    display_val = f"(Padrão: {spec.default})"
+                    
+                    # Se o atributo foi customizado:
+                    if actual_key in sec.attrs:
+                        display_val = str(val)
+                        color = config.COL_PORTAL_CONFIRMED if key == "type" and val == "portal" else config.COL_SECTOR_SELECTED
+                        
+                    attr_elements.append((y_start, f"  {key}: {display_val}", color))
+                    y_start += 20
 
 def rebuild_help_panel():
     """Cria a lista de comandos de ajuda."""
@@ -157,7 +158,7 @@ def rebuild_help_panel():
     help_elements.append((y_start, "--- Comandos ---", config.COL_TEXT))
     y_start += 20
     
-    # Comandos (adaptados do seu código original)
+    # Comandos
     help_elements.append((y_start, f"[Mudar Modo [TAB]]: {mode.upper()}", config.COL_TEXT))
     y_start += 20
     help_elements.append((y_start, f"[Grid [G]]: {'ON' if show_grid else 'OFF'}", config.COL_TEXT))

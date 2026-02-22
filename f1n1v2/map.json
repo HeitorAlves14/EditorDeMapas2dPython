@@ -1,0 +1,5050 @@
+{
+  "meta": {
+    "name": "f1n1v2",
+    "author": "Desconhecido",
+    "version": "default.ogg",
+    "created_at": "2026-02-22T18:07:36.022643"
+  },
+  "sectors": [
+    {
+      "id": 1,
+      "outer": [
+        [
+          32.0,
+          58.0
+        ],
+        [
+          32.0,
+          54.0
+        ],
+        [
+          32.0,
+          52.0
+        ],
+        [
+          32.0,
+          48.0
+        ],
+        [
+          32.0,
+          46.0
+        ],
+        [
+          44.0,
+          46.0
+        ],
+        [
+          44.0,
+          48.0
+        ],
+        [
+          44.0,
+          52.0
+        ],
+        [
+          44.0,
+          54.0
+        ],
+        [
+          44.0,
+          58.0
+        ],
+        [
+          44.0,
+          60.0
+        ],
+        [
+          32.0,
+          60.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 5,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 6,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 7,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 8,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 9,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 10,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 11,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "outer": [
+        [
+          32.0,
+          58.0
+        ],
+        [
+          31.0,
+          58.0
+        ],
+        [
+          31.0,
+          54.0
+        ],
+        [
+          32.0,
+          54.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 3.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "outer": [
+        [
+          32.0,
+          52.0
+        ],
+        [
+          31.0,
+          52.0
+        ],
+        [
+          31.0,
+          48.0
+        ],
+        [
+          32.0,
+          48.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 1.0,
+        "ceiling_h": 3.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "outer": [
+        [
+          44.0,
+          48.0
+        ],
+        [
+          45.0,
+          48.0
+        ],
+        [
+          45.0,
+          52.0
+        ],
+        [
+          44.0,
+          52.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 1.0,
+        "ceiling_h": 3.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "outer": [
+        [
+          44.0,
+          54.0
+        ],
+        [
+          45.0,
+          54.0
+        ],
+        [
+          45.0,
+          58.0
+        ],
+        [
+          44.0,
+          58.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 3.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "outer": [
+        [
+          45.0,
+          61.0
+        ],
+        [
+          45.0,
+          58.0
+        ],
+        [
+          45.0,
+          54.0
+        ],
+        [
+          45.0,
+          52.0
+        ],
+        [
+          45.0,
+          48.0
+        ],
+        [
+          45.0,
+          46.0
+        ],
+        [
+          49.0,
+          46.0
+        ],
+        [
+          49.0,
+          65.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 5,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 6,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 7,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "outer": [
+        [
+          27.0,
+          65.0
+        ],
+        [
+          27.0,
+          46.0
+        ],
+        [
+          31.0,
+          46.0
+        ],
+        [
+          31.0,
+          48.0
+        ],
+        [
+          31.0,
+          52.0
+        ],
+        [
+          31.0,
+          54.0
+        ],
+        [
+          31.0,
+          58.0
+        ],
+        [
+          31.0,
+          61.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 5,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 6,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 7,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "outer": [
+        [
+          31.0,
+          61.0
+        ],
+        [
+          45.0,
+          61.0
+        ],
+        [
+          49.0,
+          65.0
+        ],
+        [
+          27.0,
+          65.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "outer": [
+        [
+          45.0,
+          46.0
+        ],
+        [
+          45.0,
+          38.0
+        ],
+        [
+          49.0,
+          38.0
+        ],
+        [
+          49.0,
+          46.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "outer": [
+        [
+          27.0,
+          46.0
+        ],
+        [
+          27.0,
+          43.0
+        ],
+        [
+          27.0,
+          41.0
+        ],
+        [
+          27.0,
+          38.0
+        ],
+        [
+          31.0,
+          38.0
+        ],
+        [
+          31.0,
+          46.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 5,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "outer": [
+        [
+          27.0,
+          43.0
+        ],
+        [
+          24.0,
+          43.0
+        ],
+        [
+          24.0,
+          41.0
+        ],
+        [
+          27.0,
+          41.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "outer": [
+        [
+          51.0,
+          39.0
+        ],
+        [
+          53.0,
+          39.0
+        ],
+        [
+          57.0,
+          39.0
+        ],
+        [
+          59.0,
+          39.0
+        ],
+        [
+          59.0,
+          47.0
+        ],
+        [
+          51.0,
+          47.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 5,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "outer": [
+        [
+          53.0,
+          39.0
+        ],
+        [
+          53.0,
+          38.0
+        ],
+        [
+          57.0,
+          38.0
+        ],
+        [
+          57.0,
+          39.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 3.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "outer": [
+        [
+          57.0,
+          38.0
+        ],
+        [
+          53.0,
+          38.0
+        ],
+        [
+          49.0,
+          38.0
+        ],
+        [
+          45.0,
+          38.0
+        ],
+        [
+          31.0,
+          38.0
+        ],
+        [
+          27.0,
+          38.0
+        ],
+        [
+          27.0,
+          34.0
+        ],
+        [
+          59.0,
+          34.0
+        ],
+        [
+          59.0,
+          38.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 5,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 6,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 7,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 8,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "outer": [
+        [
+          27.0,
+          31.0
+        ],
+        [
+          23.0,
+          31.0
+        ],
+        [
+          23.0,
+          27.0
+        ],
+        [
+          27.0,
+          27.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "outer": [
+        [
+          27.0,
+          19.0
+        ],
+        [
+          26.0,
+          19.0
+        ],
+        [
+          26.0,
+          16.0
+        ],
+        [
+          27.0,
+          16.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 3.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "outer": [
+        [
+          59.0,
+          22.0
+        ],
+        [
+          60.0,
+          22.0
+        ],
+        [
+          60.0,
+          26.0
+        ],
+        [
+          59.0,
+          26.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 3.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "outer": [
+        [
+          26.0,
+          19.0
+        ],
+        [
+          26.0,
+          23.0
+        ],
+        [
+          22.0,
+          23.0
+        ],
+        [
+          22.0,
+          15.0
+        ],
+        [
+          26.0,
+          15.0
+        ],
+        [
+          26.0,
+          16.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 5,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "outer": [
+        [
+          60.0,
+          22.0
+        ],
+        [
+          60.0,
+          17.0
+        ],
+        [
+          64.0,
+          17.0
+        ],
+        [
+          64.0,
+          18.0
+        ],
+        [
+          64.0,
+          22.0
+        ],
+        [
+          64.0,
+          26.0
+        ],
+        [
+          64.0,
+          30.0
+        ],
+        [
+          64.0,
+          31.0
+        ],
+        [
+          60.0,
+          31.0
+        ],
+        [
+          60.0,
+          26.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 5,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 6,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 7,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 8,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 9,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "outer": [
+        [
+          64.0,
+          18.0
+        ],
+        [
+          65.0,
+          18.0
+        ],
+        [
+          65.0,
+          22.0
+        ],
+        [
+          64.0,
+          22.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "outer": [
+        [
+          64.0,
+          26.0
+        ],
+        [
+          65.0,
+          26.0
+        ],
+        [
+          65.0,
+          30.0
+        ],
+        [
+          64.0,
+          30.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "outer": [
+        [
+          60.0,
+          17.0
+        ],
+        [
+          60.0,
+          12.0
+        ],
+        [
+          70.0,
+          12.0
+        ],
+        [
+          70.0,
+          17.0
+        ],
+        [
+          64.0,
+          17.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "outer": [
+        [
+          67.0,
+          23.0
+        ],
+        [
+          67.0,
+          20.0
+        ],
+        [
+          68.0,
+          20.0
+        ],
+        [
+          68.0,
+          23.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "outer": [
+        [
+          71.0,
+          23.0
+        ],
+        [
+          71.0,
+          20.0
+        ],
+        [
+          72.0,
+          20.0
+        ],
+        [
+          72.0,
+          23.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "outer": [
+        [
+          75.0,
+          23.0
+        ],
+        [
+          75.0,
+          20.0
+        ],
+        [
+          76.0,
+          20.0
+        ],
+        [
+          76.0,
+          23.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "outer": [
+        [
+          68.0,
+          25.0
+        ],
+        [
+          68.0,
+          28.0
+        ],
+        [
+          67.0,
+          28.0
+        ],
+        [
+          67.0,
+          25.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "outer": [
+        [
+          72.0,
+          25.0
+        ],
+        [
+          72.0,
+          28.0
+        ],
+        [
+          71.0,
+          28.0
+        ],
+        [
+          71.0,
+          25.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "outer": [
+        [
+          76.0,
+          25.0
+        ],
+        [
+          76.0,
+          28.0
+        ],
+        [
+          75.0,
+          28.0
+        ],
+        [
+          75.0,
+          25.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "outer": [
+        [
+          65.0,
+          25.0
+        ],
+        [
+          67.0,
+          25.0
+        ],
+        [
+          67.0,
+          28.0
+        ],
+        [
+          65.0,
+          30.0
+        ],
+        [
+          65.0,
+          26.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "outer": [
+        [
+          67.0,
+          23.0
+        ],
+        [
+          65.0,
+          23.0
+        ],
+        [
+          65.0,
+          22.0
+        ],
+        [
+          65.0,
+          18.0
+        ],
+        [
+          67.0,
+          20.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "outer": [
+        [
+          68.0,
+          20.0
+        ],
+        [
+          71.0,
+          20.0
+        ],
+        [
+          71.0,
+          23.0
+        ],
+        [
+          68.0,
+          23.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "outer": [
+        [
+          72.0,
+          20.0
+        ],
+        [
+          75.0,
+          20.0
+        ],
+        [
+          75.0,
+          23.0
+        ],
+        [
+          72.0,
+          23.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "outer": [
+        [
+          68.0,
+          25.0
+        ],
+        [
+          71.0,
+          25.0
+        ],
+        [
+          71.0,
+          28.0
+        ],
+        [
+          68.0,
+          28.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "outer": [
+        [
+          72.0,
+          25.0
+        ],
+        [
+          75.0,
+          25.0
+        ],
+        [
+          75.0,
+          28.0
+        ],
+        [
+          72.0,
+          28.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "outer": [
+        [
+          76.0,
+          25.0
+        ],
+        [
+          79.0,
+          25.0
+        ],
+        [
+          79.0,
+          28.0
+        ],
+        [
+          76.0,
+          28.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "outer": [
+        [
+          76.0,
+          20.0
+        ],
+        [
+          79.0,
+          20.0
+        ],
+        [
+          79.0,
+          23.0
+        ],
+        [
+          76.0,
+          23.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "outer": [
+        [
+          65.0,
+          18.0
+        ],
+        [
+          79.0,
+          18.0
+        ],
+        [
+          79.0,
+          20.0
+        ],
+        [
+          76.0,
+          20.0
+        ],
+        [
+          75.0,
+          20.0
+        ],
+        [
+          72.0,
+          20.0
+        ],
+        [
+          71.0,
+          20.0
+        ],
+        [
+          68.0,
+          20.0
+        ],
+        [
+          67.0,
+          20.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 5,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 6,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 7,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 8,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "outer": [
+        [
+          67.0,
+          28.0
+        ],
+        [
+          68.0,
+          28.0
+        ],
+        [
+          71.0,
+          28.0
+        ],
+        [
+          72.0,
+          28.0
+        ],
+        [
+          75.0,
+          28.0
+        ],
+        [
+          76.0,
+          28.0
+        ],
+        [
+          79.0,
+          28.0
+        ],
+        [
+          79.0,
+          30.0
+        ],
+        [
+          65.0,
+          30.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 5,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 6,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 7,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 8,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "outer": [
+        [
+          30.0,
+          31.0
+        ],
+        [
+          30.0,
+          25.0
+        ],
+        [
+          33.0,
+          25.0
+        ],
+        [
+          33.0,
+          31.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 1.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "outer": [
+        [
+          53.0,
+          31.0
+        ],
+        [
+          53.0,
+          25.0
+        ],
+        [
+          56.0,
+          25.0
+        ],
+        [
+          56.0,
+          31.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 1.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "outer": [
+        [
+          50.0,
+          31.0
+        ],
+        [
+          47.0,
+          31.0
+        ],
+        [
+          47.0,
+          25.0
+        ],
+        [
+          50.0,
+          25.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 1.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "outer": [
+        [
+          44.0,
+          25.0
+        ],
+        [
+          44.0,
+          31.0
+        ],
+        [
+          41.0,
+          31.0
+        ],
+        [
+          41.0,
+          25.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 1.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "outer": [
+        [
+          38.0,
+          25.0
+        ],
+        [
+          38.0,
+          31.0
+        ],
+        [
+          35.0,
+          31.0
+        ],
+        [
+          35.0,
+          25.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 1.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "outer": [
+        [
+          30.0,
+          16.0
+        ],
+        [
+          33.0,
+          16.0
+        ],
+        [
+          33.0,
+          22.0
+        ],
+        [
+          30.0,
+          22.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 1.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "outer": [
+        [
+          36.0,
+          22.0
+        ],
+        [
+          36.0,
+          16.0
+        ],
+        [
+          39.0,
+          16.0
+        ],
+        [
+          39.0,
+          22.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 1.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "outer": [
+        [
+          41.0,
+          22.0
+        ],
+        [
+          41.0,
+          16.0
+        ],
+        [
+          44.0,
+          16.0
+        ],
+        [
+          44.0,
+          22.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 1.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "outer": [
+        [
+          47.0,
+          22.0
+        ],
+        [
+          47.0,
+          16.0
+        ],
+        [
+          50.0,
+          16.0
+        ],
+        [
+          50.0,
+          22.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 1.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "outer": [
+        [
+          53.0,
+          22.0
+        ],
+        [
+          53.0,
+          16.0
+        ],
+        [
+          56.0,
+          16.0
+        ],
+        [
+          56.0,
+          22.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 1.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 52,
+      "outer": [
+        [
+          27.0,
+          34.0
+        ],
+        [
+          30.0,
+          31.0
+        ],
+        [
+          33.0,
+          31.0
+        ],
+        [
+          35.0,
+          31.0
+        ],
+        [
+          38.0,
+          31.0
+        ],
+        [
+          41.0,
+          31.0
+        ],
+        [
+          44.0,
+          31.0
+        ],
+        [
+          47.0,
+          31.0
+        ],
+        [
+          50.0,
+          31.0
+        ],
+        [
+          53.0,
+          31.0
+        ],
+        [
+          56.0,
+          31.0
+        ],
+        [
+          59.0,
+          34.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 5,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 6,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 7,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 8,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 9,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 10,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 11,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "outer": [
+        [
+          27.0,
+          34.0
+        ],
+        [
+          27.0,
+          31.0
+        ],
+        [
+          27.0,
+          27.0
+        ],
+        [
+          27.0,
+          19.0
+        ],
+        [
+          27.0,
+          16.0
+        ],
+        [
+          27.0,
+          15.0
+        ],
+        [
+          30.0,
+          16.0
+        ],
+        [
+          30.0,
+          22.0
+        ],
+        [
+          30.0,
+          25.0
+        ],
+        [
+          30.0,
+          31.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 5,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 6,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 7,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 8,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 9,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "outer": [
+        [
+          56.0,
+          31.0
+        ],
+        [
+          56.0,
+          25.0
+        ],
+        [
+          56.0,
+          22.0
+        ],
+        [
+          56.0,
+          16.0
+        ],
+        [
+          59.0,
+          15.0
+        ],
+        [
+          59.0,
+          22.0
+        ],
+        [
+          59.0,
+          26.0
+        ],
+        [
+          59.0,
+          34.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 5,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 6,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 7,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "outer": [
+        [
+          27.0,
+          15.0
+        ],
+        [
+          36.0,
+          14.0
+        ],
+        [
+          50.0,
+          14.0
+        ],
+        [
+          59.0,
+          15.0
+        ],
+        [
+          56.0,
+          16.0
+        ],
+        [
+          53.0,
+          16.0
+        ],
+        [
+          50.0,
+          16.0
+        ],
+        [
+          47.0,
+          16.0
+        ],
+        [
+          44.0,
+          16.0
+        ],
+        [
+          41.0,
+          16.0
+        ],
+        [
+          39.0,
+          16.0
+        ],
+        [
+          36.0,
+          16.0
+        ],
+        [
+          33.0,
+          16.0
+        ],
+        [
+          30.0,
+          16.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 5,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 6,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 7,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 8,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 9,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 10,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 11,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 12,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 13,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "outer": [
+        [
+          30.0,
+          22.0
+        ],
+        [
+          33.0,
+          22.0
+        ],
+        [
+          36.0,
+          22.0
+        ],
+        [
+          39.0,
+          22.0
+        ],
+        [
+          41.0,
+          22.0
+        ],
+        [
+          44.0,
+          22.0
+        ],
+        [
+          47.0,
+          22.0
+        ],
+        [
+          50.0,
+          22.0
+        ],
+        [
+          53.0,
+          22.0
+        ],
+        [
+          56.0,
+          22.0
+        ],
+        [
+          56.0,
+          25.0
+        ],
+        [
+          53.0,
+          25.0
+        ],
+        [
+          50.0,
+          25.0
+        ],
+        [
+          47.0,
+          25.0
+        ],
+        [
+          44.0,
+          25.0
+        ],
+        [
+          41.0,
+          25.0
+        ],
+        [
+          38.0,
+          25.0
+        ],
+        [
+          35.0,
+          25.0
+        ],
+        [
+          33.0,
+          25.0
+        ],
+        [
+          30.0,
+          25.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 5,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 6,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 7,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 8,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 9,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 10,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 11,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 12,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 13,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 14,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 15,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 16,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 17,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 18,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 19,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "outer": [
+        [
+          33.0,
+          22.0
+        ],
+        [
+          33.0,
+          16.0
+        ],
+        [
+          36.0,
+          16.0
+        ],
+        [
+          36.0,
+          22.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "outer": [
+        [
+          39.0,
+          22.0
+        ],
+        [
+          39.0,
+          16.0
+        ],
+        [
+          41.0,
+          16.0
+        ],
+        [
+          41.0,
+          22.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "outer": [
+        [
+          44.0,
+          16.0
+        ],
+        [
+          47.0,
+          16.0
+        ],
+        [
+          47.0,
+          22.0
+        ],
+        [
+          44.0,
+          22.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "outer": [
+        [
+          50.0,
+          16.0
+        ],
+        [
+          53.0,
+          16.0
+        ],
+        [
+          53.0,
+          22.0
+        ],
+        [
+          50.0,
+          22.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "outer": [
+        [
+          50.0,
+          25.0
+        ],
+        [
+          53.0,
+          25.0
+        ],
+        [
+          53.0,
+          31.0
+        ],
+        [
+          50.0,
+          31.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "outer": [
+        [
+          47.0,
+          31.0
+        ],
+        [
+          44.0,
+          31.0
+        ],
+        [
+          44.0,
+          25.0
+        ],
+        [
+          47.0,
+          25.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "outer": [
+        [
+          38.0,
+          25.0
+        ],
+        [
+          41.0,
+          25.0
+        ],
+        [
+          41.0,
+          31.0
+        ],
+        [
+          38.0,
+          31.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 64,
+      "outer": [
+        [
+          35.0,
+          31.0
+        ],
+        [
+          33.0,
+          31.0
+        ],
+        [
+          33.0,
+          25.0
+        ],
+        [
+          35.0,
+          25.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 65,
+      "outer": [
+        [
+          36.0,
+          14.0
+        ],
+        [
+          35.0,
+          10.0
+        ],
+        [
+          51.0,
+          10.0
+        ],
+        [
+          50.0,
+          14.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 1.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 66,
+      "outer": [
+        [
+          27.0,
+          15.0
+        ],
+        [
+          28.0,
+          13.0
+        ],
+        [
+          32.0,
+          13.0
+        ],
+        [
+          36.0,
+          14.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 67,
+      "outer": [
+        [
+          50.0,
+          14.0
+        ],
+        [
+          54.0,
+          13.0
+        ],
+        [
+          58.0,
+          13.0
+        ],
+        [
+          59.0,
+          15.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 68,
+      "outer": [
+        [
+          54.0,
+          13.0
+        ],
+        [
+          54.0,
+          9.0
+        ],
+        [
+          58.0,
+          5.0
+        ],
+        [
+          58.0,
+          13.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 69,
+      "outer": [
+        [
+          28.0,
+          13.0
+        ],
+        [
+          28.0,
+          5.0
+        ],
+        [
+          32.0,
+          9.0
+        ],
+        [
+          32.0,
+          13.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 70,
+      "outer": [
+        [
+          38.0,
+          9.0
+        ],
+        [
+          38.0,
+          7.0
+        ],
+        [
+          48.0,
+          7.0
+        ],
+        [
+          48.0,
+          9.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 1.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 71,
+      "outer": [
+        [
+          48.0,
+          7.0
+        ],
+        [
+          48.0,
+          5.0
+        ],
+        [
+          58.0,
+          5.0
+        ],
+        [
+          54.0,
+          9.0
+        ],
+        [
+          48.0,
+          9.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 72,
+      "outer": [
+        [
+          38.0,
+          9.0
+        ],
+        [
+          32.0,
+          9.0
+        ],
+        [
+          28.0,
+          5.0
+        ],
+        [
+          38.0,
+          5.0
+        ],
+        [
+          38.0,
+          7.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 74,
+      "outer": [
+        [
+          48.0,
+          5.0
+        ],
+        [
+          48.0,
+          7.0
+        ],
+        [
+          38.0,
+          7.0
+        ],
+        [
+          38.0,
+          5.0
+        ],
+        [
+          42.0,
+          4.0
+        ],
+        [
+          44.0,
+          4.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 3.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 5,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 75,
+      "outer": [
+        [
+          42.0,
+          4.0
+        ],
+        [
+          42.0,
+          3.0
+        ],
+        [
+          44.0,
+          3.0
+        ],
+        [
+          44.0,
+          4.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    },
+    {
+      "id": 76,
+      "outer": [
+        [
+          42.0,
+          3.0
+        ],
+        [
+          41.0,
+          3.0
+        ],
+        [
+          41.0,
+          0.0
+        ],
+        [
+          45.0,
+          0.0
+        ],
+        [
+          45.0,
+          3.0
+        ],
+        [
+          44.0,
+          3.0
+        ]
+      ],
+      "parent_id": null,
+      "attrs": {
+        "floor_text": null,
+        "ceiling_text": null,
+        "floor_h": 0.0,
+        "ceiling_h": 4.0,
+        "light_level": 1.0,
+        "is_sky": true,
+        "passable": true,
+        "special": "",
+        "damage": 0,
+        "is_secret": false,
+        "floor_off": 8,
+        "ceiling_off": 16
+      },
+      "walls": [
+        {
+          "index": 0,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 1,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 2,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 3,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 4,
+          "back_id": null,
+          "attrs": {}
+        },
+        {
+          "index": 5,
+          "back_id": null,
+          "attrs": {}
+        }
+      ]
+    }
+  ]
+}

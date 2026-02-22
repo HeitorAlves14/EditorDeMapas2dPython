@@ -1,11 +1,11 @@
 # config.py
 
 # --- Configurações básicas ---
-W, H = 1900, 1000#1280, 800
+W, H = 1280, 800#1900, 1000
 UI_W = 420 #320           # UI lateral reduzida
 VIEW_W = W - UI_W
 GRID = 10
-TOLERANCE = 0.1
+TOLERANCE = 0
 CAM_OFFSET_X = 0
 CAM_OFFSET_Y = 0
 

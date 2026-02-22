@@ -1,0 +1,18 @@
+{
+  "entities": [
+    {
+      "id": 1,
+      "type": "player_spawn",
+      "pos": [
+        43.0,
+        1.3
+      ],
+      "angle": 0.0,
+      "sector_id": 76,
+      "attrs": {
+        "skill_level": null,
+        "is_enemy": true
+      }
+    }
+  ]
+}

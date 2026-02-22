@@ -1,9 +1,6 @@
 # main_editor.py
 import sys
 import pygame as pg
-import threading
-import json
-import math
 
 # Importar os módulos
 import config
@@ -12,17 +9,16 @@ import map_manager as mm
 import ui
 import render
 from data_structures import ATTRIBUTE_REGISTRY, Entity, ENTITY_ATTRIBUTE_REGISTRY
+from TextInputBox import TextInputBox
 
-# -----------------------------
-# Variáveis de Estado
-# -----------------------------
-# show_grid, use_snap, mode, message movidos para ui.py
-# sectors, current_vertices, selected_sector movidos para map_manager.py
 
 # -----------------------------
 # Inicialização
 # -----------------------------
 pg.init()
+info = pg.display.Info()
+'''config.W = info.current_w
+config.H = info.current_h''' # Coloquei isso daqui só para testes
 screen = pg.display.set_mode((config.W, config.H))
 pg.display.set_caption("2D Map Editor")
 
@@ -33,43 +29,26 @@ except:
 
 ui.init_ui(font)
 
+input_box = TextInputBox(config.VIEW_W // 2 - 150, config.H - 60, 300, 40, font)
+input_purpose = None  # Pode ser "export", "load", "attr", ou "wall_attr"
+input_target = None   # Guarda o objeto alvo (ex: o setor específico e a parede)
+
 # -----------------------------
 # Funções de Ação (Callbacks)
 # -----------------------------
 
-def handle_prompt_input(prompt):
-    """Função para simular uma caixa de entrada (bloqueante)."""
-    print(prompt, end="")
-    try:
-        user_input = input()
-        return user_input.strip()
-    except EOFError:
-        return ""
-
 def on_export():
-    map_name = handle_prompt_input("Nome da pasta para exportar (ex: 'mapa_fase_1'): ")
-    if map_name:
-        try:
-            # Chama a função atualizada do map_manager
-            msg = mm.export_map(map_name) 
-            ui.set_message(msg)
-        except Exception as e:
-            ui.set_message(f"ERRO ao exportar: {e}")
-    else:
-        ui.set_message("Exportação cancelada.")
+    global input_purpose
+    ui.set_mode("typing")
+    input_purpose = "export"
+    input_box.activate("Nome da pasta para exportar: ")
+
 
 def on_load():
-    map_name = handle_prompt_input("Nome da pasta para carregar (ex: 'mapa_fase_1'): ")
-    if map_name:
-        try:
-            # Chama a função atualizada do map_manager
-            msg = mm.load_map(map_name)
-            ui.set_message(msg)
-            ui.rebuild_attr_panel() 
-        except Exception as e:
-            ui.set_message(f"ERRO ao carregar: {e}")
-    else:
-        ui.set_message("Carregamento cancelado.")
+    global input_purpose
+    ui.set_mode("typing")
+    input_purpose = "load"
+    input_box.activate("Nome da pasta para carregar: ")
 
 def on_clear():
     msg = mm.clear_map()
@@ -84,74 +63,116 @@ def toggle_bsp():
 ui.rebuild_ui(on_export, on_load, on_clear, toggle_bsp)
 
 def handle_entity_creation(grid_map):
-    """Lógica para criar uma entidade após a entrada do tipo."""
-    entity_type = handle_prompt_input("Tipo da entidade (skill_level, is_enemy): ")
-    mx, my = pg.mouse.get_pos()
+    """Inicia a criação de entidade pedindo o tipo via TextInputBox."""
+    global input_purpose, input_target
+    ui.set_mode("typing")
+    input_purpose = "entity"
+    input_target = grid_map
+    input_box.activate("Tipo da entidade (ex: skill_level, is_enemy): ")
+
+def apply_attribute_from_text(input_string, target_objs, wall_idx=None):
+    """
+    Recebe a string da caixa de texto (ex: 'light_level=0.5' ou 'damage=r') 
+    e aplica aos objetos selecionados.
+    """
+    # 1. Validações iniciais
+    if not input_string or not target_objs: return "Operação cancelada ou sem alvos selecionados."
+
+    if "=" not in input_string: return "Formato inválido. Use 'chave=valor' (ex: light_level=0.5)"
+
+    # 2. Separa a chave e o valor
+    key, new_val = input_string.split("=", 1)
+    key = key.strip()
+    new_val = new_val.strip()
+
+    # 3. Normaliza os alvos para serem sempre uma lista (facilita o loop)
+    # Se for uma Entidade única, transformamos numa lista de um elemento.
+    if not isinstance(target_objs, list): target_objs = [target_objs]
+
+    sucessos = 0
+    removidos = 0
+
+    # 4. Aplica a lógica a todos os objetos alvo
+    for obj in target_objs:
+        if new_val.lower() == 'r':
+            mm.remove_attrs(obj, [key], wall_idx) # Remove o atributo
+            removidos += 1
+        else:
+            if mm.set_attr(obj, key, new_val, wall_idx): # Define e valida o tipo
+                sucessos += 1
+            else:
+                return f"ERRO: Valor '{new_val}' inválido para o tipo de '{key}'."
     
-    if entity_type:
-        msg = mm.add_entity((mx, my), entity_type, grid_map)
-        ui.set_message(msg)
-    else:
-        ui.set_message("Criação de entidade cancelada.")
+    # 5. Atualiza a interface gráfica
     ui.rebuild_attr_panel()
 
-def handle_attribute_input(key, obj ):
-    """Lógica para receber entrada de texto do usuário para um atributo."""
-    if not obj: return
-
-    prompt = f"Novo valor para {key} (ou 'r' para remover): "
-    
-    # Simulação de input box (Pygame não tem um fácil)
-    # Na prática, você precisaria de uma biblioteca de UI ou uma implementação própria.
-    # Aqui, se usa o input() do console como fallback, o que bloqueia o Pygame.
-    # Para um editor real, isso deve ser uma janela de diálogo do Pygame.
-    
-    # Apenas como placeholder:
-    print(prompt, end="")
-    try:
-        new_val = input()
-    except EOFError: # Acontece em alguns ambientes de execução
-        return
-    
-    obj_name = "Entidade" if isinstance(obj, Entity) else "Setor"
-    obj_id = obj.id
-    
-    if new_val.lower() == 'r':
-        # Usa o 'obj' para remover
-        mm.remove_attrs(obj, [key])
-        ui.set_message(f"Atributo {key} removido de {obj_name} {obj_id}")
-    else:
-        # Usa o 'obj' para setar
-        if mm.set_attr(obj, key, new_val):
-            ui.set_message(f"Atributo {key} definido para {new_val} em {obj_name} {obj_id}")
-        else:
-            ui.set_message(f"ERRO: Valor inválido para o tipo de {key}.")
-    
-    ui.rebuild_attr_panel() # Atualiza a UI
+    # 6. Retorna a mensagem de feedback
+    if removidos > 0:
+        return f"Atributo '{key}' removido de {removidos} objeto(s)."
+    return f"Atributo '{key}' definido para {new_val} em {sucessos} objeto(s)."
 
 # -----------------------------
 # Loop Principal
 # -----------------------------
 running = True
 while running:
-    for e in pg.event.get():
-        if e.type == pg.QUIT:
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
             running = False
+            
+        # 1. Se a caixa de texto estiver ativa, ELA consome o evento de teclado
+        if input_box.active:
+            resultado = input_box.handle_event(event)
 
+            if resultado is not None:  # ENTER pressionado
+                if input_purpose == "export":
+                    msg = mm.export_map(resultado)
+                    ui.set_message(msg)
+
+                elif input_purpose == "load":
+                    msg = mm.load_map(resultado)
+                    ui.set_message(msg)
+                    ui.rebuild_attr_panel()
+
+                elif input_purpose == "attr":
+                    alvos = mm.selected_entity if mm.selected_entity else mm.selected_sector
+                    msg = apply_attribute_from_text(resultado, alvos)
+                    ui.set_message(msg)
+
+                elif input_purpose == "wall_attr":
+                    sec, w_idx = input_target
+                    msg = apply_attribute_from_text(resultado, [sec], wall_idx=w_idx)
+                    ui.set_message(msg)
+                    ui.rebuild_attr_panel()
+                
+                elif input_purpose == "entity":
+                    mx, my = pg.mouse.get_pos()
+                    grid_map = input_target
+                    if resultado:
+                        msg = mm.add_entity((mx, my), resultado, grid_map)
+                        ui.set_message(msg)
+                    else:
+                        ui.set_message("Criação de entidade cancelada.")
+                    ui.rebuild_attr_panel()
+
+                # Resetar estado
+                # Desativa o modo de escrita e volta a selecionar
+                ui.mode = "select"
+            continue # Impede que as teclas acionem outras funções (como atalhos de ecrã)
         # Tratar eventos de botão primeiro
-        if ui.handle_ui_event(e):
+        if ui.handle_ui_event(event):
             continue
 
         # Lógica de Input no painel de visualização
-        if e.type == pg.MOUSEWHEEL :
-            if e.y > 0: # scroll para cima
+        if event.type == pg.MOUSEWHEEL :
+            if event.y > 0: # scroll para cima
                 config.GRID = max(2, config.GRID - 1) # diminui tamanho da célula
-            elif e.y < 0: # scroll para baixo
-                config.GRID = max(2, config.GRID + 1) # aumenta o tamanho da célula
+            elif event.y < 0: # scroll para baixo
+                config.GRID = config.GRID + 1 # aumenta o tamanho da célula
             ui.set_message(f"Zoom ajustado: GRID={config.GRID}")
             ui.rebuild_help_panel()
-        if e.type == pg.MOUSEBUTTONDOWN and e.button == 1:
-            mx, my = e.pos
+        if event.type == pg.MOUSEBUTTONDOWN and event.button == 1:
+            mx, my = event.pos
             if mx < config.VIEW_W: # Clique na área de desenho
                 if ui.mode == "draw":
                     # Adicionar vértice
@@ -162,7 +183,9 @@ while running:
                     msg = mm.pick_entity(mx, my, config.GRID)
                     if mm.selected_entity is None:
                         #Se não selecionou entidade, seleciona setor.
-                        msg = mm.pick_sector(mx, my, config.GRID)
+                        keys = pg.key.get_pressed()
+                        add = keys[pg.K_LSHIFT]
+                        msg = mm.pick_sector(mx, my, config.GRID, add=add)
                     ui.set_message(msg)
                 elif ui.mode == "portal": #Modo portal
                     # Tentar criar portal
@@ -170,12 +193,12 @@ while running:
                         ui.set_message("Portal criado/alterado.")
                     else:
                         ui.set_message("Nenhuma dica de portal encontrada no local.")
-                elif ui.mode == "entity":#Modo entity
+                elif ui.mode == "entity": #Modo entity
                     # Cria entidade na posição do clique
                     handle_entity_creation(config.GRID)
                 ui.rebuild_attr_panel()
 
-        elif e.type == pg.MOUSEBUTTONDOWN and e.button == 3:
+        elif event.type == pg.MOUSEBUTTONDOWN and event.button == 3:
             if ui.mode == "draw":
                 # Fechar polígono
                 msg = mm.close_sector()
@@ -183,7 +206,7 @@ while running:
                 ui.rebuild_attr_panel() # Pode mudar a seleção
             elif ui.mode == "select":
                 # Limpar seleção
-                mm.selected_sector = None
+                mm.selected_sector = []
                 mm.selected_entity = None
                 ui.set_message("Seleção limpa.")
                 ui.rebuild_attr_panel()
@@ -193,11 +216,11 @@ while running:
                 ui.rebuild_attr_panel()
 
         # Teclas
-        elif e.type == pg.KEYDOWN:
-            if e.key == pg.K_ESCAPE:
+        elif event.type == pg.KEYDOWN:
+            if event.key == pg.K_ESCAPE:
                 running = False
             
-            elif e.key == pg.K_TAB:
+            elif event.key == pg.K_TAB:
                 # Ciclagem de modos
                 if ui.mode == "draw":
                     ui.set_mode("select")
@@ -209,90 +232,95 @@ while running:
                 else:
                     ui.set_mode("draw")
 
-            elif e.key == pg.K_LEFT:
+            elif event.key == pg.K_LEFT:
                 config.CAM_OFFSET_X += config.GRID
-            elif e.key == pg.K_RIGHT:
+            elif event.key == pg.K_RIGHT:
                 config.CAM_OFFSET_X -= config.GRID
-            elif e.key == pg.K_UP:
+            elif event.key == pg.K_UP:
                 config.CAM_OFFSET_Y += config.GRID
-            elif e.key == pg.K_DOWN:
+            elif event.key == pg.K_DOWN:
                 config.CAM_OFFSET_Y -= config.GRID
 
-            elif e.key == pg.K_e:
+            elif event.key == pg.K_e:
                 on_export()
 
-            elif e.key == pg.K_b:
+            elif event.key == pg.K_b:
                 toggle_bsp()
 
-            elif e.key == pg.K_g:
+            elif event.key == pg.K_g:
                 ui.toggle_grid()
                 ui.rebuild_help_panel()
 
-            elif e.key == pg.K_s:
+            elif event.key == pg.K_s:
                 ui.toggle_snap()
                 ui.rebuild_help_panel()
 
-            elif e.key == pg.K_n:
+            elif event.key == pg.K_n:
                 mm.current_vertices.clear()
                 ui.set_message("Limpo vértices atuais.")
                 ui.rebuild_attr_panel()
 
-            elif e.key == pg.K_z:
+            elif event.key == pg.K_z:
                 if mm.current_vertices:
                     mm.current_vertices.pop()
                     ui.set_message("Desfeito último vértice.")
                     ui.rebuild_attr_panel()
 
-            elif e.key == pg.K_DELETE:
-                #Prioridade em deletar entidade
+            elif event.key == pg.K_DELETE:
+                # Prioridade em deletar entidade
                 if mm.selected_entity:
                     msg = mm.remove_entity(mm.selected_entity)
                     ui.set_message(msg)
                     ui.rebuild_attr_panel()
                     
                 elif mm.selected_sector:
-                    mm.sectors.remove(mm.selected_sector)
-                    mm.selected_sector = None
+                    for sec in mm.selected_sector:
+                        mm.sectors.remove(sec)
+                    mm.selected_sector = []
                     mm.rebuild_indices()
-                    ui.set_message("Setor deletado.")
+                    ui.set_message("Setor(es) deletado(s).")
                     ui.rebuild_attr_panel()
 
-            elif e.key == pg.K_w and ui.mode == "select" and mm.selected_sector:
-                # Atributo de parede (Portal ID, Textura, etc.).
-                walls_vertices = mm.selected_sector.outer + mm.selected_sector.outer[:1]
+            elif event.key == pg.K_w and ui.mode == "select" and mm.selected_sector:
                 mx, my = pg.mouse.get_pos()
+                
+                parede_encontrada = False
+                for sec in mm.selected_sector:
+                    walls_vertices = sec.outer + sec.outer[:1]
+                    for i in range(len(sec.outer)):
+                        v1 = walls_vertices[i]
+                        v2 = walls_vertices[i+1]
+                        v1_screen = render.map_to_screen(v1)
+                        v2_screen = render.map_to_screen(v2)
 
-                # Procura a parede mais proxima do cursor.
-                for i in range(len(mm.selected_sector.outer)):
-                    v1 = walls_vertices[i]
-                    v2 = walls_vertices[i+1]
-
-                    # Verifica se o ponto está proximo da linha.
-                    d = geo.point_line_distance((mx, my), v1, v2)
-                    if d < config.TOLERANCE:
-                        key = f"wall_{i}"
-                        obj = mm.selected_sector
-                        handle_attribute_input(key, obj)
+                        d = geo.point_line_distance((mx, my), v1_screen, v2_screen)
+                        if d < 10:
+                            # Ativa a caixa de texto para ESTA parede
+                            ui.set_mode("typing")
+                            input_purpose = "wall_attr"
+                            input_target = (sec, i) # Guardamos o setor e a chave da parede
+                            input_box.activate(f"Novo valor para {i} (ou 'r' para remover): ")
+                            
+                            parede_encontrada = True
+                            break
+                    if parede_encontrada:
                         break
-                else:
+                        
+                if not parede_encontrada:
                     ui.set_message("Nenhuma parede próxima.")
             
-            elif e.key == pg.K_a and ui.mode == "select":
-                
-                # Define o objeto a ser modificado: prioriza Entidade sobre Setor
-                obj = mm.selected_entity if mm.selected_entity else mm.selected_sector
-                
-                if obj:
+            elif event.key == pg.K_a: # Assumindo que 'A' era a tecla para editar atributos
+                # Atalho para iniciar a edição de atributos
+                if event.key == pg.K_a and ui.mode == "select":
+                    alvos = mm.selected_entity if mm.selected_entity else mm.selected_sector
                     
-                    prompt_msg = "Atributo (hp, mass, floor_h, etc.) > "
-                    prompt_key = handle_prompt_input(prompt_msg)
-                    
-                    if prompt_key:
-                        handle_attribute_input(prompt_key, obj)
+                    if alvos:
+                        ui.mode = "typing" # Previne interações indesejadas
+                        input_purpose = "attr"
+                        input_target = alvos
+                        input_box.activate("Atributo (ex: damage=10) >")
                     else:
-                        ui.set_message("Atribuição cancelada.")
-                else:
-                    ui.set_message("Nenhum setor ou entidade selecionada.")
+                        ui.set_message("Nenhum setor ou entidade selecionada.")
             
             
 
@@ -310,13 +338,17 @@ while running:
         # Desenha a BSP (apenas a estrutura, não a renderização do jogo)
         render.draw_bsp(screen, bsp_root)
     else:
-        # Desenha setores e paredes no modo editor
+        # Desenha setores event paredes no modo editor
         render.draw_sectors_and_walls(screen, mode=ui.mode)
 
     render.draw_entities(screen)
     
     render.draw_current(screen)
     ui.draw_ui(screen)
+
+    # Atualiza e desenha a caixa de texto por cima de tudo
+    input_box.update()
+    input_box.draw(screen)
     
     pg.display.flip()
 

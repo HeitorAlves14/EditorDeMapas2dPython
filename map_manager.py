@@ -3,14 +3,15 @@ import os, json
 from collections import defaultdict
 import geometry as geo
 import config
-from data_structures import Sector, Entity, Wall, BSPNode, ATTRIBUTE_REGISTRY, ENTITY_ATTRIBUTE_REGISTRY
+from data_structures import Sector, Entity, Wall, BSPNode, ATTRIBUTE_REGISTRY, ENTITY_ATTRIBUTE_REGISTRY, WALL_ATTRIBUTE_REGISTRY
+import datetime
 
 # -----------------------------
 # Estado do editor (Variáveis globais do Módulo)
 # -----------------------------
 sectors = []
 current_vertices = []
-selected_sector = None
+selected_sector = []
 sectors_by_id = {}
 children_by_parent = defaultdict(list)
 portal_hint_segments = [] # pares ((a1,a2),(b1,b2)) candidatos
@@ -69,37 +70,35 @@ def depth(sector):
     return d
 
 # -----------------------------
-# Atributos dinâmicos (Shell/Getter/Setter)
+# Atributos dinâmicos (Getter/Setter)
 # -----------------------------
-# get_attr, set_attr, clear_all_attrs, remove_attrs, apply_default_attrs, copy_attrs_between_maps
-# ... (mover estas funções, usando ATTRIBUTE_REGISTRY importado)
 
-def get_registry(obj):
+def get_registry(obj, is_wall=False):
     """Retorna o registro de atributos apropriado (Setor ou Entidade)."""
-    if isinstance(obj, Sector):
-        return ATTRIBUTE_REGISTRY
-    elif isinstance(obj, Entity):
-        return ENTITY_ATTRIBUTE_REGISTRY
+    if is_wall: return WALL_ATTRIBUTE_REGISTRY
+    elif isinstance(obj, Sector): return ATTRIBUTE_REGISTRY
+    elif isinstance(obj, Entity): return ENTITY_ATTRIBUTE_REGISTRY
     return {} # Se não for um objeto com registro padrão, retorna vazio
 
-def get_attr(obj, key):
+def get_attr(obj, key, wall_idx=None):
     """Retorna o valor de um atributo ou seu valor padrão."""
-    registry = get_registry(obj)
+    registry = get_registry(obj, is_wall=(wall_idx is not None))
 
-    # 1. Tentar obter o valor diretamente
-    if key in obj.attrs:
-        return obj.attrs[key]
+    # Se for parede, a chave real no dicionário do setor tem prefixo
+    actual_key = f"wall_{wall_idx}_{key}" if wall_idx is not None else key
 
-    # 2. Se não estiver armazenado, buscar o valor padrão no registro (se existir)
+    if actual_key in obj.attrs:
+        return obj.attrs[actual_key]
+    
     if key in registry:
         return registry[key].default
-
-    # 3. Retornar None se não for encontrado
+    
     return None
 
-def set_attr(obj, key, value):
+def set_attr(obj, key, value, wall_idx=None):
     """Tenta definir um atributo para um Setor ou Entidade, com validação de tipo."""
-    registry = get_registry(obj)
+    registry = get_registry(obj, is_wall=(wall_idx is not None))
+    actual_key = f"wall_{wall_idx}_{key}" if wall_idx is not None else key
     
     # 1. Tentar validar contra o registro padrão
     if key in registry:
@@ -113,22 +112,38 @@ def set_attr(obj, key, value):
             return False # Falha na conversão
     
     # 2. Se a chave não está no registro (atributo customizado ou de parede):
-    # Armazena como string
-    obj.attrs[key] = str(value) 
+    else: # Armazena como string
+        obj.attrs[key] = str(value) 
+
+    # Se editamos uma parede que é portal, precisamos sincronizar o outro lado
+    if wall_idx is not None and key == "type" and isinstance(obj, Sector):
+        opp = find_opposite_wall(obj, wall_idx)
+        if opp:
+            s2, j = opp
+            other_key = f"wall_{j}_{key}"
+            if s2.attrs.get(other_key) != obj.attrs[actual_key]:
+                s2.attrs[other_key] = obj.attrs[actual_key]
+
     return True
 
 
 
-def screen_to_map(sx, sy):
-    return ((sx - config.CAM_OFFSET_X) / config.GRID,
-            (sy - config.CAM_OFFSET_Y) / config.GRID)
+def screen_to_map (mx, my):
+    """Converte coordenadas da tela para coordenadas do mapa."""
+    return (
+        (mx - config.CAM_OFFSET_X)/config.GRID,
+        (my - config.CAM_OFFSET_Y)/config.GRID
+    )
 
-def remove_attrs(obj, keys):
+def map_tolerance_pixels(px=6):
+    return (px- config.CAM_OFFSET_X)/config.GRID
+
+def remove_attrs(obj, keys, wall_idx=None):
     """Remove atributos customizados de um setor ou entidade."""
     for key in keys:
-        if key in obj.attrs:
-            del obj.attrs[key]
-# ... (outras funções de atributo)
+        actual_key = f"wall_{wall_idx}_{key}" if wall_idx is not None else key
+        if actual_key in obj.attrs:
+            del obj.attrs[actual_key]
 
 # -----------------------------
 # Interações essenciais (Desenho/Seleção)
@@ -182,22 +197,25 @@ def pick_sector_recursive(pt, sector):
             return found
     return sector
 
-def pick_sector(mx, my, grid_map):
+def pick_sector(mx, my, grid_map, add=False):
     global selected_sector
 
-    mx, my, = geo.snap_to_grid(mx, my, grid_map)
-    
-    map_x, map_y = screen_to_map(mx, my)
-    pt = (map_x, map_y)
+    pt = screen_to_map(mx, my)
 
-    roots = [s for s in sectors if getattr(s, "parent_id", None) is None]
+    roots = [s for s in sectors if s.parent_id is None]
     roots.sort(key=lambda s: abs(geo.area_polygon(s.outer)), reverse=True)
+
     for root in roots:
         found = pick_sector_recursive(pt, root)
         if found:
-            selected_sector = found
-            return f"Selecionado setor {selected_sector.id}"
-    selected_sector = None
+            if add:
+                if found not in selected_sector:
+                    selected_sector.append(found)
+            else:
+                selected_sector = [found]
+            return f"Selecionado setor {found.id}"
+    if not add:
+        selected_sector = []
     return "Nenhum setor sob o clique."
 
 def pick_entity(mx, my, grid_map):
@@ -209,7 +227,8 @@ def pick_entity(mx, my, grid_map):
     # Itera sobre entidades de trás para frente (última criada é a mais visível)
     for entity in reversed(entities):
         e_pos = entity.pos
-        if geo.point_distance(pt, e_pos) < config.TOLERANCE:
+        tol = map_tolerance_pixels(8)
+        if geo.point_distance(pt, e_pos) < tol:
             selected_entity = entity
             return f"Entidade {selected_entity.id} ({selected_entity.type}) selecionada."
             
@@ -226,10 +245,37 @@ def remove_entity(entity):
         return f"Entidade {entity.id} removida."
     return "Entidade não encontrada."
 
-# -----------------------------
-# Persistência
-# -----------------------------
-# export_map, load_map, clear_map
+def pick_wall(screen_pt, px_tol=15):
+    # Converte o clique da tela para coordenadas do mapa (onde as paredes vivem)
+    pt = screen_to_map(*screen_pt)
+    
+    # A tolerância no mundo do mapa deve ser proporcional ao GRID
+    # Se o grid é 20, uma tolerância de 5 unidades de mapa é boa
+    world_tol = px_tol / (config.GRID / 10 if config.GRID > 0 else 1)
+
+    best_wall = None
+    min_dist = world_tol
+
+    for s in sectors:
+        for i, (v1, v2) in enumerate(geo.edges_of(s.outer)):
+            dist = geo.point_line_distance(pt, v1, v2)
+            if dist < min_dist:
+                min_dist = dist
+                best_wall = (s, i, v1, v2)
+                
+    return best_wall
+
+def find_opposite_wall(sector, wall_index):
+    a, b = sector.outer[wall_index], sector.outer[(wall_index+1) % len(sector.outer)]
+
+    for s2 in sectors:
+        if s2 is sector:
+            continue
+        for j, (c, d) in enumerate(geo.edges_of(s2.outer)):
+            if geo.same_segment(a, b, c, d):
+                return s2, j
+
+    return None
 
 # -----------------------------
 # Walls e BSP
@@ -251,10 +297,12 @@ def build_walls(sectors_):
             back_ids = [sid2 for sid2 in edge_map.get(rev_key, []) if sid2 != s.id]
             back_id = back_ids[0] if back_ids else None
             
+            wall_key = f"wall_{i}"
+            wall_attr = s.attrs.get(wall_key, None)
             is_portal = False
-            if get_attr(s, f"wall_{i}") == "portal" and back_id is not None:
+            if get_attr(s, "type", wall_idx=i) == "portal":
                 is_portal = True
-            walls.append(Wall(a, b, s.id, back_id, is_portal=is_portal))
+            walls.append(Wall(a, b, s.id, back_id, is_portal=is_portal, attrs={"tag": wall_attr}))
     return walls
 
 def choose_splitter(segments):
@@ -308,7 +356,6 @@ def build_bsp_from_walls(walls):
 # -----------------------------
 # Portal assist (visual + persistência)
 # -----------------------------
-# compute_portal_hints, try_create_portal_at_point
 
 def compute_portal_hints():
     global portal_hint_segments
@@ -324,36 +371,42 @@ def compute_portal_hints():
                     if geo.almost_colinear(a1,a2,b1,b2) and geo.overlap_on_line(a1,a2,b1,b2):
                         portal_hint_segments.append(((a1,a2),(b1,b2)))
 
-def try_create_portal_at_point(pt, grid_map):
-    # Converte pixels da tela para espaçamento da grade
-    nx, ny = geo.snap_to_grid(pt[0], pt[1], grid_map)
-    pt = (nx / grid_map, ny / grid_map)
+def try_create_portal_at_point(screen_pt, grid_map):
+    picked = pick_wall(screen_pt)
+    if not picked: return False
 
-    created = False
-    for (a1,a2),(b1,b2) in portal_hint_segments:
-        if geo.point_line_distance(pt, a1, a2) < config.TOLERANCE or geo.point_line_distance(pt, b1, b2) < config.TOLERANCE:
-            for s in sectors:
-                for i,(v1,v2) in enumerate(geo.edges_of(s.outer)):
-                    if geo.almost_colinear(a1,a2,v1,v2) and geo.overlap_on_line(a1,a2,v1,v2):
-                        current = get_attr(s, f"wall_{i}")
-                        if current == "portal":
-                            remove_attrs(s, [f"wall_{i}"])
-                        else:
-                            set_attr(s, f"wall_{i}", "portal")
-                        created = True
-    return created
+    s, i, a, b = picked
+    opposite = find_opposite_wall(s, i)
+
+    if not opposite: return False  # parede externa, não pode ser portal
+
+    s2, j = opposite
+
+    if get_attr(s, "type", wall_idx=i) == "portal":
+        remove_attrs(s, ["type"], wall_idx=i)
+        remove_attrs(s2, ["type"], wall_idx=j)
+    else:
+        set_attr(s, "type", "portal", wall_idx=i)
+        set_attr(s2, "type", "portal", wall_idx=j)
+    return True
 
 # Funções de I/O (Exportar/Importar)
-def export_map(map_name="map.json"):
-
+def export_map(map_name="map.json", meta=None):
     #1- Cria o diretório (se não existir)
     os.makedirs(map_name, exist_ok=True)
 
-    #2- Prepara os dados do mapa (Setores e Paredes)
-    walls = build_walls(sectors)
+    #2- Metadados básicos
+    if meta is None:
+        meta = {
+            "name": map_name,
+            "author": "Desconhecido",
+            "version": "default.ogg",
+            "created_at": datetime.datetime.now().isoformat()
+        }
+
     map_data = {
+        "meta": meta,
         "sectors": [s.to_json() for s in sectors],
-        "walls": [w.to_json() for w in walls],
     }
 
     #3- Prepara os dados das entidades
@@ -382,22 +435,33 @@ def load_map(map_name="map.json"):
         return f"ERRO: Arquivo de mapa não encontrado, verifique se o nome está certo."
 
     #1 Carrega mapa com setores e paredes.
-    sectors.clear()
     with open(map_filepath, "r", encoding="utf-8") as f:
         map_data = json.load(f)
+    
+    # --- Metadados ---
+    meta = map_data.get("meta", {})
+    nome = meta.get("name", "Sem nome")
+    soundtrack = meta.get("soundtrack", "default.ogg")
+    autor = meta.get("author", "Desconhecido")
+    versao = meta.get("version", "1.0")
 
-    #sectors = []
+    sectors.clear()
+
     for sdata in map_data.get("sectors", []):
         outer = [tuple(v) for v in sdata["outer"]]
         sec = Sector(outer, parent_id=sdata.get("parent_id"), attrs=sdata.get("attrs", {}))
         sec.id = sdata["id"]
 
-        for key, spec in ATTRIBUTE_REGISTRY.items():
-            if key not in sec.attrs:
-                sec.attrs[key] = spec.default
-
+        # Reconstruir atributos das paredes
+        for wdata in sdata.get("walls", []):
+            i = wdata["index"]
+            for k, v in wdata.get("attrs", {}).items():
+                sec.attrs[f"wall_{i}_{k}"] = v
+        
         sectors.append(sec)
-
+    
+    rebuild_indices()
+    
     # Carrega entidades do mapa.
     entities.clear()
     if os.path.exists(entities_filepath):
@@ -430,8 +494,9 @@ def load_map(map_name="map.json"):
     Entity.set_next_id(max_entity_id + 1)
 
     rebuild_indices()
+    compute_portal_hints()
 
-    selected_sector = None
+    selected_sector = []
     selected_entity = None
     current_vertices = []
 
@@ -443,6 +508,6 @@ def clear_map():
     Sector.set_next_id(1)
     Entity.set_next_id(1)
     rebuild_indices()
-    selected_sector = None
+    selected_sector = []
     current_vertices = []
     return "Mapa limpo. Pronto para começar um novo!"

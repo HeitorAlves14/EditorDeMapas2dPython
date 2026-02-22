@@ -3,18 +3,19 @@ import pygame as pg
 import math
 import config
 import geometry as geo
-from data_structures import BSPNode
 from data_structures import Entity 
 import map_manager as mm # Para acessar o estado do mapa
 
 def draw_grid(screen):
-    """Desenha a grade de fundo."""
+    """Desenha a grade de fundo sincronizada com zoom e offset."""
     start_x = -config.CAM_OFFSET_X % config.GRID
-    start_y = -config.CAM_OFFSET_Y & config.GRID
+    start_y = -config.CAM_OFFSET_Y % config.GRID
+
     for x in range(start_x, config.VIEW_W, config.GRID):
         pg.draw.line(screen, config.COL_GRID, (x, 0), (x, config.H))
     for y in range(start_y, config.H, config.GRID):
         pg.draw.line(screen, config.COL_GRID, (0, y), (config.VIEW_W, y))
+
 
 def draw_current(screen):
     """Desenha o polígono em construção."""
@@ -31,9 +32,12 @@ def draw_current(screen):
     for v in verts:
         pg.draw.circle(screen, config.COL_VERTEX, v, 4)
 
-def map_to_screen (point):
-    return (point[0] * config.GRID + config.CAM_OFFSET_X,
-            point [1] * config.GRID + config.CAM_OFFSET_Y)
+def map_to_screen(point):
+    """Converte coordenadas do mapa para coordenadas da tela."""
+    return (
+        point[0] * config.GRID + config.CAM_OFFSET_X,
+        point[1] * config.GRID + config.CAM_OFFSET_Y
+        )
 
 def map_list_to_screen(points):
     return [map_to_screen(p) for p in points]
@@ -59,7 +63,7 @@ def draw_sectors_and_walls(screen, mode="select"):
         # Desenhar paredes e portais
         if len(sector.outer) >= 2:
             for i, (a, b) in enumerate(geo.edges_of(screen_outer)):
-                wall_type = mm.get_attr(sector, f"wall_{i}")
+                wall_type = mm.get_attr(sector, "type", wall_idx=i)
                 
                 if wall_type == "portal":
                     col = config.COL_PORTAL_CONFIRMED
@@ -86,7 +90,6 @@ def draw_sectors_and_walls(screen, mode="select"):
                 if mode != "portal":
                     pg.draw.line(screen, col, a, b, width)
 
-# render.py
 def draw_entities(screen):
     """Desenha todas as entidades no mapa."""
     for e in mm.entities:

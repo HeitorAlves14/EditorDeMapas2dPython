@@ -88,14 +88,16 @@ def point_in_poly(pt, poly):
     return inside
 
 def point_line_distance(p, a, b):
-    ax, ay = a; bx, by = b; px, py = p
-    vx, vy = bx - ax, by - ay
-    wx, wy = px - ax, py - ay
-    c1 = vx*wx + vy*wy
-    c2 = vx*vx + vy*vy + 1e-9
-    t = max(0.0, min(1.0, c1 / c2))
-    projx, projy = ax + t*vx, ay + t*vy
-    return math.hypot(projx - px, projy - py)
+    # Calcula o quadrado do comprimento do segmento
+    l2 = point_distance(a, b)**2
+    if l2 == 0: return point_distance(p, a)
+    
+    # Projeção do ponto no segmento
+    t = ((p[0] - a[0]) * (b[0] - a[0]) + (p[1] - a[1]) * (b[1] - a[1])) / l2
+    t = max(0, min(1, t)) # Garante que a projeção caia dentro do segmento
+    
+    projection = (a[0] + t * (b[0] - a[0]), a[1] + t * (b[1] - a[1]))
+    return point_distance(p, projection)
 
 def segments_intersect(a1, a2, b1, b2):
     def orient(p, q, r):
@@ -110,6 +112,18 @@ def segments_intersect(a1, a2, b1, b2):
        (o4 == 0 and point_on_segment(a2, b1, b2)):
         return True
     return (o1 > 0) != (o2 > 0) and (o3 > 0) != (o4 > 0)
+
+def same_segment(a, b, c, d, eps=1e-5):
+    return (
+        points_equal(a, d, eps) and
+        points_equal(b, c, eps)
+    )
+
+def points_equal(p1, p2, eps=1e-5):
+    return (
+        abs(p1[0] - p2[0]) <= eps and 
+        abs(p1[1] - p2[1]) <= eps
+    )
 
 def polys_intersect(polyA, polyB):
     for a1, a2 in edges_of(polyA):

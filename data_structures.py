@@ -1,7 +1,7 @@
 # data_structures.py
 import json
 from collections import defaultdict
-from geometry import area_polygon # Importação relativa após a separação
+from geometry import edges_of # Importação relativa após a separação
 
 # -----------------------------
 # Atributos dinâmicos
@@ -12,32 +12,40 @@ class AttributeSpec:
         self.typ = typ
         self.default = default
 
-# Registro padrão dos setores
+# --- Registro padrão dos setores --- #
 ATTRIBUTE_REGISTRY = {}
 
 # Aqui adiciona os atributos padrões
 ATTRIBUTE_REGISTRY["floor_text"] = AttributeSpec("floor_text", int, None)
 ATTRIBUTE_REGISTRY["ceiling_text"] = AttributeSpec("ceiling_text", int, None)
-ATTRIBUTE_REGISTRY["wall_text"] = AttributeSpec("wall_text", int, None)
 ATTRIBUTE_REGISTRY["floor_h"] = AttributeSpec("floor_h", float, 0.0)
 ATTRIBUTE_REGISTRY["ceiling_h"] = AttributeSpec("ceiling_h", float, 4.0)
 
-ATTRIBUTE_REGISTRY["light_level"] = AttributeSpec("light_level", int, 255)
-ATTRIBUTE_REGISTRY["is_sky"] = AttributeSpec("is_sky", bool, False)
+ATTRIBUTE_REGISTRY["light_level"] = AttributeSpec("light_level", float, 1.0)
+ATTRIBUTE_REGISTRY["is_sky"] = AttributeSpec("is_sky", bool, True)
+ATTRIBUTE_REGISTRY["passable"] = AttributeSpec("passable", bool, True)
 ATTRIBUTE_REGISTRY["special"] = AttributeSpec("special", str, "")
 ATTRIBUTE_REGISTRY["damage"] = AttributeSpec("damage", int, 0)
 ATTRIBUTE_REGISTRY["is_secret"] = AttributeSpec("is_secret", bool, False)
 
 ATTRIBUTE_REGISTRY["floor_off"] = AttributeSpec("floor_off", int, 8)
 ATTRIBUTE_REGISTRY["ceiling_off"] = AttributeSpec("ceiling_off", int, 16)
-ATTRIBUTE_REGISTRY["wall_off"] = AttributeSpec("wall_off", int, 32)
 
-# Registros padrão das entidades.
+# --- Registros padrão das entidades --- #
 ENTITY_ATTRIBUTE_REGISTRY = {}
 
 ENTITY_ATTRIBUTE_REGISTRY["skill_level"] = AttributeSpec("skill_level", int, None)
 ENTITY_ATTRIBUTE_REGISTRY["is_enemy"] = AttributeSpec("is_enemy", bool, True)
 
+# --- Registro padrão das paredes --- #
+""" Importante. A partir de agora as paredes possuem (ou era para possuir)
+--- atributos únicos, além de que o modelo do JSON foi refeito para melhorar
+--- a qualidade das informações e ocupar menos espaço. """
+WALL_ATTRIBUTE_REGISTRY = {}
+
+WALL_ATTRIBUTE_REGISTRY["type"] = AttributeSpec("type", str, "solid") # solid, portal, invisible...
+WALL_ATTRIBUTE_REGISTRY["texture"] = AttributeSpec("texture", int, None)
+WALL_ATTRIBUTE_REGISTRY["offset"] = AttributeSpec("offset", int, 32)
 # -----------------------------
 # Dados do editor (classes)
 # -----------------------------
@@ -53,17 +61,37 @@ class Sector:
             self.attrs.update(attrs)
 
     def to_json(self):
+        # 1. Atributos do setor (apenas os diferentes do padrão)
         attrs_output = {}
         for key, spec in ATTRIBUTE_REGISTRY.items():
             # Obtém o valor de self.attrs ou o valor padrão (spec.default).
             val = self.attrs.get(key, spec.default)
             attrs_output[key] = val
+        # 2. Paredes do setor
+        walls_output = []
+        for i, (a, b) in enumerate(edges_of(self.outer)):
+            wall_attrs = {} # tipo principal da parede (ex: portal)
+            
+            # Pega todos os atributos da parede (padrões modificados e customizados)
+            prefix = f"wall_{i}_"
+            # atributos extras da parede (ex: textura, flags)
+            for k, v in self.attrs.items():
+                if k.startswith(prefix):
+                    clean_key = k.replace(prefix, "")
+                    wall_attrs[clean_key] = v
+            
+            walls_output.append({
+                "index": i,
+                "back_id": None, # será preenchido no build_walls
+                "attrs": wall_attrs
+            })
             
         return {
             "id": self.id,
             "outer": [[round(x,2), round(y,2)] for (x,y) in self.outer],
             "parent_id": self.parent_id,
-            "attrs": attrs_output
+            "attrs": attrs_output,
+            "walls": walls_output
         }
 
     def __repr__(self):
@@ -96,11 +124,8 @@ class Entity:
     def to_json(self):
         # Combina atributos modificados com valores padrão das entidades.
         attrs_output = {}
-        # ...
 
-        # Corrigido self.etype para self.type em ambas as ocorrências:
         entity_type_attrs = ENTITY_ATTRIBUTE_REGISTRY
-        # A linha acima pode ser simplificada, pois o registro é global.
         
         # Iterar sobre todos os atributos definidos para este tipo de entidade
         for key, spec in entity_type_attrs.items(): # Uso direto do registro global
@@ -110,7 +135,6 @@ class Entity:
 
         return {
             "id": self.id,
-            # Corrigido: self.etype -> self.type
             "type": self.type, 
             "pos": [round(self.pos[0], 2), round(self.pos[1], 2)],
             "angle": round(self.angle, 3),
@@ -124,20 +148,28 @@ class Entity:
 
 class Wall:
     # A classe Wall...
-    def __init__(self, start, end, front_id, back_id, is_portal=False):
+    def __init__(self, start, end, front_id, back_id, is_portal, attrs=None):
         self.start = start
         self.end = end
         self.sector_front = front_id
         self.sector_back = back_id
         self.is_portal = is_portal
+        self.attrs = attrs or {}
 
     def to_json(self):
+        safe_attrs = {}
+        for k, v in self.attrs.items():
+            if isinstance(v, (str, int, float, bool)) or v is None:
+                safe_attrs[k] = v
+            else:
+                safe_attrs[k] = str(v) # força conversão para string
         return {
             "start": [round(self.start[0],2), round(self.start[1],2)],
             "end": [round(self.end[0],2), round(self.end[1],2)],
             "sector_front": self.sector_front,
             "sector_back": self.sector_back,
-            "is_portal": self.is_portal
+            "is_portal": self.is_portal,
+            "attrs": safe_attrs
         }
 
 class BSPNode:
