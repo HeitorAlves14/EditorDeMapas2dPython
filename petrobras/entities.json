@@ -1,0 +1,32 @@
+{
+  "entities": [
+    {
+      "id": 1,
+      "type": "player_spawn",
+      "pos": [
+        -27.8,
+        42.2
+      ],
+      "angle": 0.0,
+      "sector_id": 108,
+      "attrs": {
+        "skill_level": null,
+        "is_enemy": true
+      }
+    },
+    {
+      "id": 2,
+      "type": "subaru",
+      "pos": [
+        -24.6,
+        39.8
+      ],
+      "angle": 0.0,
+      "sector_id": 108,
+      "attrs": {
+        "skill_level": null,
+        "is_enemy": true
+      }
+    }
+  ]
+}

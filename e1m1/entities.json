@@ -1,0 +1,32 @@
+{
+  "entities": [
+    {
+      "id": 1,
+      "type": "player_spawn",
+      "pos": [
+        56.9,
+        65.1
+      ],
+      "angle": 270.0,
+      "sector_id": 4,
+      "attrs": {
+        "skill_level": null,
+        "is_enemy": false
+      }
+    },
+    {
+      "id": 2,
+      "type": "zombie",
+      "pos": [
+        83.5,
+        55.3
+      ],
+      "angle": 0.0,
+      "sector_id": 73,
+      "attrs": {
+        "skill_level": null,
+        "is_enemy": true
+      }
+    }
+  ]
+}

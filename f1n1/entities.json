@@ -13,6 +13,48 @@
         "skill_level": null,
         "is_enemy": true
       }
+    },
+    {
+      "id": 2,
+      "type": "FreddyFazbear",
+      "pos": [
+        43.0,
+        12.0
+      ],
+      "angle": 0.0,
+      "sector_id": 65,
+      "attrs": {
+        "skill_level": null,
+        "is_enemy": true
+      }
+    },
+    {
+      "id": 3,
+      "type": "HatsuneMiku",
+      "pos": [
+        38.0,
+        12.0
+      ],
+      "angle": 0.0,
+      "sector_id": 65,
+      "attrs": {
+        "skill_level": null,
+        "is_enemy": true
+      }
+    },
+    {
+      "id": 4,
+      "type": "KasaneTeto",
+      "pos": [
+        48.1,
+        11.9
+      ],
+      "angle": 0.0,
+      "sector_id": 65,
+      "attrs": {
+        "skill_level": null,
+        "is_enemy": true
+      }
     }
   ]
 }

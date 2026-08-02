@@ -16,10 +16,14 @@ class AttributeSpec:
 ATTRIBUTE_REGISTRY = {}
 
 # Aqui adiciona os atributos padrões
+ATTRIBUTE_REGISTRY["tag"] = AttributeSpec("tag", str, None)
 ATTRIBUTE_REGISTRY["floor_text"] = AttributeSpec("floor_text", int, None)
 ATTRIBUTE_REGISTRY["ceiling_text"] = AttributeSpec("ceiling_text", int, None)
 ATTRIBUTE_REGISTRY["floor_h"] = AttributeSpec("floor_h", float, 0.0)
 ATTRIBUTE_REGISTRY["ceiling_h"] = AttributeSpec("ceiling_h", float, 4.0)
+
+ATTRIBUTE_REGISTRY["floor_off"] = AttributeSpec("floor_off", int, 8)
+ATTRIBUTE_REGISTRY["ceiling_off"] = AttributeSpec("ceiling_off", int, 16)
 
 ATTRIBUTE_REGISTRY["light_level"] = AttributeSpec("light_level", float, 1.0)
 ATTRIBUTE_REGISTRY["is_sky"] = AttributeSpec("is_sky", bool, True)
@@ -27,9 +31,6 @@ ATTRIBUTE_REGISTRY["passable"] = AttributeSpec("passable", bool, True)
 ATTRIBUTE_REGISTRY["special"] = AttributeSpec("special", str, "")
 ATTRIBUTE_REGISTRY["damage"] = AttributeSpec("damage", int, 0)
 ATTRIBUTE_REGISTRY["is_secret"] = AttributeSpec("is_secret", bool, False)
-
-ATTRIBUTE_REGISTRY["floor_off"] = AttributeSpec("floor_off", int, 8)
-ATTRIBUTE_REGISTRY["ceiling_off"] = AttributeSpec("ceiling_off", int, 16)
 
 # --- Registros padrão das entidades --- #
 ENTITY_ATTRIBUTE_REGISTRY = {}
@@ -44,6 +45,7 @@ ENTITY_ATTRIBUTE_REGISTRY["is_enemy"] = AttributeSpec("is_enemy", bool, True)
 WALL_ATTRIBUTE_REGISTRY = {}
 
 WALL_ATTRIBUTE_REGISTRY["type"] = AttributeSpec("type", str, "solid") # solid, portal, invisible...
+WALL_ATTRIBUTE_REGISTRY["tag"] = AttributeSpec("tag", str, None)
 WALL_ATTRIBUTE_REGISTRY["texture"] = AttributeSpec("texture", int, None)
 WALL_ATTRIBUTE_REGISTRY["offset"] = AttributeSpec("offset", int, 32)
 # -----------------------------
@@ -60,7 +62,7 @@ class Sector:
         if attrs:
             self.attrs.update(attrs)
 
-    def to_json(self):
+    def to_json(self, neighbor_map=None):
         # 1. Atributos do setor (apenas os diferentes do padrão)
         attrs_output = {}
         for key, spec in ATTRIBUTE_REGISTRY.items():
@@ -70,19 +72,29 @@ class Sector:
         # 2. Paredes do setor
         walls_output = []
         for i, (a, b) in enumerate(edges_of(self.outer)):
-            wall_attrs = {} # tipo principal da parede (ex: portal)
-            
-            # Pega todos os atributos da parede (padrões modificados e customizados)
+            wall_attrs = {}
+
+            # 1. Atributos padrão da parede (igual ao setor)
+            for key, spec in WALL_ATTRIBUTE_REGISTRY.items():
+                actual_key = f"wall_{i}_{key}"
+                val = self.attrs.get(actual_key, spec.default)
+                wall_attrs[key] = val
+
+            # 2. Atributos extras customizados (que não estão no registro padrão)
             prefix = f"wall_{i}_"
-            # atributos extras da parede (ex: textura, flags)
             for k, v in self.attrs.items():
                 if k.startswith(prefix):
                     clean_key = k.replace(prefix, "")
-                    wall_attrs[clean_key] = v
-            
+                    if clean_key not in wall_attrs:  # evita sobrescrever os padrões
+                        wall_attrs[clean_key] = v
+
+            bid = None
+            if neighbor_map and (self.id, i) in neighbor_map:
+                bid = neighbor_map[(self.id, i)]
+
             walls_output.append({
                 "index": i,
-                "back_id": None, # será preenchido no build_walls
+                "back_id": bid,  # será preenchido no build_walls
                 "attrs": wall_attrs
             })
             

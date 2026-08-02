@@ -1,7 +1,8 @@
 # ui.py
 import pygame as pg
 import config
-import map_manager as mm
+
+from map_manager import EditorContext
 from data_structures import ATTRIBUTE_REGISTRY, ENTITY_ATTRIBUTE_REGISTRY, WALL_ATTRIBUTE_REGISTRY
 
 # Variáveis globais de UI (Estado de UI)
@@ -15,7 +16,9 @@ show_grid = True
 use_snap = True
 show_bsp = False
 
-def init_ui(pg_font, on_export_func=None, on_load_func=None, on_clear_func=None, on_bsp_toggle_func=None):
+context = EditorContext()
+
+def init_ui(pg_font):
     """Inicializa fontes e constrói a UI inicial."""
     global font
     font = pg_font
@@ -68,8 +71,8 @@ def rebuild_attr_panel():
     
     # Atributos dinâmicos são apenas strings na UI por simplicidade
     y_start = 220
-    if mm.selected_entity:
-        entity = mm.selected_entity
+    if context.selected_entity:
+        entity = context.selected_entity
         
         # ... (Exibição básica de ID, tipo, posição, etc.) ...
         attr_elements.append((y_start, f"ENTIDADE {entity.id} | Tipo: {entity.type}", config.COL_PORTAL_CONFIRMED))
@@ -85,7 +88,7 @@ def rebuild_attr_panel():
         y_start += 20
         
         for key, spec in ENTITY_ATTRIBUTE_REGISTRY.items():
-            val = mm.get_attr(entity, key) # Usa o get_attr unificado
+            val = context.get_attr(entity, key) # Usa o get_attr unificado
             
             # Formatação para destacar se o valor foi alterado do padrão
             if val is not None and val != spec.default:
@@ -111,14 +114,14 @@ def rebuild_attr_panel():
         y_start += 10
         # Continua para a seção de setores, mas com y_start mais alto
 
-    elif mm.selected_sector:
-        for sec in mm.selected_sector:
+    elif context.selected_sector:
+        for sec in context.selected_sector:
             # --- Título e Atributos do Setor ---
-            attr_elements.append((y_start, f"Setor {sec.id} | Prof: {mm.depth(sec)}", config.COL_SECTOR_SELECTED))
+            attr_elements.append((y_start, f"Setor {sec.id} | Prof: {context.depth(sec)}", config.COL_SECTOR_SELECTED))
             y_start += 20
             
             for key, spec in ATTRIBUTE_REGISTRY.items():
-                val = mm.get_attr(sec, key)
+                val = context.get_attr(sec, key)
                 color = config.COL_SECTOR if key in sec.attrs else config.COL_TEXT
                 display_val = str(val) if key in sec.attrs else f"(Padrão: {spec.default})"
                 attr_elements.append((y_start, f"  {key}: {display_val}", color))
@@ -135,7 +138,7 @@ def rebuild_attr_panel():
                 
                 # Lista os atributos padrões da parede
                 for key, spec in WALL_ATTRIBUTE_REGISTRY.items():
-                    val = mm.get_attr(sec, key, wall_idx=i)
+                    val = context.get_attr(sec, key, wall_idx=i)
                     actual_key = f"wall_{i}_{key}"
                     
                     color = config.COL_TEXT
